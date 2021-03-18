@@ -1,22 +1,65 @@
 import React, {useState} from 'react';
 import './App.css';
 
+//NEEDS CLEANING
+import logo from './images/logo.png';
+import item1 from './images/sakurapastelpinkblank.jpg';
+import item2 from './images/sakuratraykuromipurple.jpg';
+import item3 from './images/darkflowerpurple.jpg'
+import item4 from './images/mandalalotus.jpg'
+import item5 from './images/pastelpurpleluna.jpg'
+import item6 from './images/pastelpinkmonsterra.jpg'
+import item7 from './images/pastelpurpled20white.jpg'
+import item8 from './images/rainbowandretroround.jpg'
+
 const PAGE_PRODUCTS = 'products';
 const PAGE_CART = 'cart';
 
 function App() {
   const [cart, setCart] = useState ([]); //cart for products to be pushed to
   const [page, setPage] = useState(PAGE_PRODUCTS); //page for viewing cart
+
+  //NEEDS CLEANING
   const [products] = useState([ //uses state to loop over info from product array
     {
-      name: "Sakura Tray | Pink + Blank",
+      name: "Sakura Tray | Pink",
       cost: "$12",
-      image: "https://i.etsystatic.com/24985667/r/il/755173/2804024067/il_794xN.2804024067_5rt2.jpg"
+      image: (item1)
     },
     {
       name: "Sakura Tray | Purple + Rainbow Holo Kuromi",
       cost: "$15",
-      image: "https://i.etsystatic.com/12775544/r/il/32c88d/2829613274/il_794xN.2829613274_ktcv.jpg"
+      image: (item2)
+    },
+    {
+      name: "Flower Tray | Black + Gold Flakes",
+      cost: "$20",
+      image: (item3)
+    },
+    {
+      name: "Mandala Lotus Coaster | Clear + Iridescent Flakes",
+      cost: "$12",
+      image: (item4)
+    },
+    {
+      name: "Luna Cat Earrings | Translucent Purple",
+      cost: "$6",
+      image: (item5)
+    },
+    {
+      name: "Monstera Earrings | Pastel Pink",
+      cost: "$6",
+      image: (item6)
+    },
+    {
+      name: "D20 Phone Grip | Pastel Purple + White",
+      cost: "$6",
+      image: (item7)
+    },
+    {
+      name: "Miscellaneous Phone Grip | 2 pack",
+      cost: "$6",
+      image: (item8)
     }
   ])
 
@@ -34,7 +77,7 @@ function App() {
 
   const renderProducts = () => ( //returns some JSX
     <>
-    <h1>Resin Products</h1>
+    <h1>In Stock Products</h1>
     <div className="products">
     {products.map((product, index) => ( //uses .map to iterate through product array and get info for each product
       <div className="product" key={index}>
@@ -72,9 +115,11 @@ function App() {
 
   return (
     <div className="App">
+      <h1 className="shopname">Resin, Dice and Everything Nice</h1>
       <header>
-        <button onClick ={() => navigateTo(PAGE_CART)}>View Cart ({cart.length})</button>
-        <button onClick ={() => navigateTo(PAGE_PRODUCTS)}>Home</button>
+        <button className="button2" onClick ={() => navigateTo(PAGE_CART)}>View Cart ({cart.length})</button>
+        <img className="shoplogo" src={logo} alt="logo"/>
+        <button className="button2" onClick ={() => navigateTo(PAGE_PRODUCTS)}>Home</button>
       </header>
       {page === PAGE_PRODUCTS && renderProducts()}
       {page === PAGE_CART && renderCart()}
