@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 
 function App() {
+  const [cart, setCart] = useState ([]); //cart for products to be pushed to
   const [products] = useState([ //uses state to loop over info from product array
     {
       name: "Sakura Tray | Pink + Blank",
@@ -15,6 +16,9 @@ function App() {
     }
   ])
 
+  const addToCart = (product) => { //function takes in product as arg, adds product to cart array when button is clicked
+    setCart([...cart, product]); //uses array destructuring to append the product to the existing cart
+  };
 
   return (
     <div className="App">
@@ -26,7 +30,9 @@ function App() {
             <h4>{product.cost}</h4>
             <img src={product.image} alt={product.name}/>
             <br></br>
-            <button>ADD TO CART</button>
+            <button onClick={() => addToCart(product)}>
+              ADD TO CART
+              </button>
             </div>
       ))}
       </div>
