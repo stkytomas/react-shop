@@ -50,7 +50,7 @@ function App() {
     <>
     <h1>Cart</h1>
     <div className="products">
-    {products.map((product, index) => ( //uses .map to iterate through product array and get info for each product
+    {cart.map((product, index) => ( //uses .map to iterate through product array and get info for each product
       <div className="product" key={index}>
         <h3>{product.name}</h3>
           <h4>{product.cost}</h4>
@@ -69,6 +69,7 @@ function App() {
     <div className="App">
       <header>
         <button onClick ={() => navigateTo(PAGE_CART)}>View Cart ({cart.length})</button>
+        <button onClick ={() => navigateTo(PAGE_PRODUCTS)}>View Resin Products</button>
       </header>
       {page === PAGE_PRODUCTS && renderProducts()}
       {page === PAGE_CART && renderCart()}
