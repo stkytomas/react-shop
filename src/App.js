@@ -19,14 +19,17 @@ function App() {
   return (
     <div className="App">
       <h1>Resin Products</h1>
-      {products.map((product) => ( //uses .map to iterate through product array and get info for each product
-        <div>
+      <div className="products">
+      {products.map((product, index) => ( //uses .map to iterate through product array and get info for each product
+        <div className="product" key={index}>
           <h3>{product.name}</h3>
             <h4>{product.cost}</h4>
             <img src={product.image} alt={product.name}/>
+            <br></br>
             <button>ADD TO CART</button>
             </div>
       ))}
+      </div>
     </div>
   );
 }
