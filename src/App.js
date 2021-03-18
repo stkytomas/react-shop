@@ -21,11 +21,16 @@ function App() {
   ])
 
   const addToCart = (product) => { //function takes in product as arg, adds product to cart array when button is clicked
-    setCart([...cart, product]); //uses array destructuring to append the product to the existing cart
+    setCart([...cart, {...product}]); //uses array destructuring to append the product to the existing cart
   };
+
+  const removeFromCart = (productToRemove) => {
+    setCart(cart.filter(product => product !== productToRemove)) //filters out any product !== productToRemove
+  };
+
   const navigateTo = (cartPage) => {
     setPage(cartPage);
-  }
+  };
 
   const renderProducts = () => ( //returns some JSX
     <>
@@ -56,9 +61,9 @@ function App() {
           <h4>{product.cost}</h4>
           <img src={product.image} alt={product.name}/>
           <br></br>
-          {/* <button onClick={() => addToCart(product)}>
-            Add to Cart
-            </button> */}
+          <button onClick={() => removeFromCart(product)}>
+            Remove
+            </button>
           </div>
         ))}
       </div>
@@ -69,7 +74,7 @@ function App() {
     <div className="App">
       <header>
         <button onClick ={() => navigateTo(PAGE_CART)}>View Cart ({cart.length})</button>
-        <button onClick ={() => navigateTo(PAGE_PRODUCTS)}>View Resin Products</button>
+        <button onClick ={() => navigateTo(PAGE_PRODUCTS)}>Home</button>
       </header>
       {page === PAGE_PRODUCTS && renderProducts()}
       {page === PAGE_CART && renderCart()}
