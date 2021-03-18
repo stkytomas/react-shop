@@ -50,3 +50,18 @@
 .product {
   padding: 40px;
 }
+
+button {
+  font-size: 20px;
+  padding: 10px;
+}
+
+header {
+  background-color: rgb(212, 92, 228);
+}
+
+h1 {
+  background-color: pink;
+  height: 70px;
+  padding-top: 20px;
+}

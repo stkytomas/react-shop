@@ -22,6 +22,9 @@ function App() {
 
   return (
     <div className="App">
+      <header>
+        <button>View Cart ({cart.length})</button>
+      </header>
       <h1>Resin Products</h1>
       <div className="products">
       {products.map((product, index) => ( //uses .map to iterate through product array and get info for each product
@@ -31,7 +34,7 @@ function App() {
             <img src={product.image} alt={product.name}/>
             <br></br>
             <button onClick={() => addToCart(product)}>
-              ADD TO CART
+              Add to Cart
               </button>
             </div>
       ))}
